@@ -1,3 +1,8 @@
 /* 
     General Styles
 */
+
+.debug {
+    width: 75%;
+    margin: auto;
+}
