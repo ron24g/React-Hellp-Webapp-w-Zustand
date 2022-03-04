@@ -4,7 +4,7 @@ import { Fragment } from "react/cjs/react.production.min";
 
 const Debug = (props) => {
   let params = new URLSearchParams(window.location.search);
-  if (params.has("debug")) {
+  if (true || params.has("debug")) {
     return (
       <div className="debug">
         <p>{props.message}</p>
