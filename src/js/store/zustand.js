@@ -7,7 +7,7 @@ const useStore = create((set, get) => ({
   people: [],
   addPeople: (person) => {
     set({
-      people: get().people.concat([person])
+      people: get().people.concat(person)
     });
   },
   addDemoData: (item) => {

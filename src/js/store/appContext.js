@@ -23,7 +23,7 @@ const injectContext = PassedComponent => {
 			  .then((result) => {
 				store.addPeople(result.results);
 				if (result.next !== null) {
-				  loadPeopleData(result.next);
+				  loadPeopleData(result.next, store);
 				}
 			  });
 		  };
