@@ -1,14 +1,24 @@
 import create from "zustand";
 
-const useStore = create((set) => ({
-  data: [{ background: "#888", initial: "#345", title: "This is a title." }],
-  addData: (item) => {
-    data.concat([item]);
-  },
-  removeData: (itemName) =>
+const useStore = create((set, get) => ({
+  demo: [
+    { background: "#888", initial: "#345", title: "This is a title." }
+  ],
+  people: [],
+  addPeople: (person) => {
     set({
-      data: data.filter((dataItem) => {
-        return dataItem.name !== itemName;
+      people: get().people.concat(person)
+    });
+  },
+  addDemoData: (item) => {
+    set({
+      demo: get().demo.concat([item])
+    });
+  },
+  removeDemoData: (itemName) =>
+    set({
+      demo: get().demo.filter((demoItem) => {
+        return demoItem.name !== itemName;
       }),
     }),
 }));
