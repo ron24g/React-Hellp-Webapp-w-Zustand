@@ -28,6 +28,24 @@ const injectContext = PassedComponent => {
 			  });
 		  };
 
+		  const loadVehicleData = (store, url = "https://swapi.dev/api/vehicles/") => {
+			var requestOptions = {
+				method: 'GET',
+				redirect: 'follow'
+			  };
+			  
+			  fetch(url, requestOptions)
+				.then(response => response.json())
+				.then((result) => {
+					store.addVehicles(result.results);
+					if (result.next !== null) {
+						loadVehicleData(store, result.next);
+					}
+				});
+				
+
+		  }
+
 		useEffect(() => {
 			/**
 			 * EDIT THIS!
@@ -40,6 +58,7 @@ const injectContext = PassedComponent => {
 			 **/
 
 			loadPeopleData("https://swapi.dev/api/people/", state);
+			loadVehicleData(state);
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
