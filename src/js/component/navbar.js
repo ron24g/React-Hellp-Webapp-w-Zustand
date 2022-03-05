@@ -5,6 +5,8 @@ import Debug from "../component/debug";
 import useStore from "../store/zustand";
 
 export const Navbar = () => {
+  const store = useStore();
+
   return (
     <nav className="navbar navbar-light bg-light mb-3">
       <Link to="/">
@@ -17,7 +19,6 @@ export const Navbar = () => {
           </button>
         </Link>
       </div>
-      <Debug object={useStore()} />
     </nav>
   );
 };

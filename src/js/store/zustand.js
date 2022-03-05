@@ -1,22 +1,22 @@
 import create from "zustand";
 
 const useStore = create((set, get) => ({
-    people: [], 
+  people: [],
   vehicles: [],
   planets: [],
   addPeople: (person) => {
     set({
-      people: get().people.concat(person)
+      people: get().people.concat(person),
     });
   },
   addVehicles: (vehicle) => {
     set({
-      vehicles: get().vehicles.concat(vehicle)
+      vehicles: get().vehicles.concat(vehicle),
     });
   },
   addPlanets: (planets) => {
     set({
-      planets: get().planets.concat(planets)
+      planets: get().planets.concat(planets),
     });
   },
 }));
