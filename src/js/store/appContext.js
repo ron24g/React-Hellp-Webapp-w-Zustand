@@ -12,7 +12,7 @@ const injectContext = (PassedComponent) => {
     //this will be passed as the contenxt value
     const state = useStore((state) => state);
 
-    const loadPeopleData = (url, store) => {
+    const loadPeopleData = (store, url="https://swapi.dev/api/people/") => {
       var requestOptions = {
         method: "GET",
         redirect: "follow",
@@ -23,7 +23,7 @@ const injectContext = (PassedComponent) => {
         .then((result) => {
           store.addPeople(result.results);
           if (result.next !== null) {
-            loadPeopleData(result.next, store);
+            loadPeopleData(store, result.next);
           }
         });
     };
@@ -77,7 +77,7 @@ const injectContext = (PassedComponent) => {
        *
        **/
 
-      loadPeopleData("https://swapi.dev/api/people/", state);
+      loadPeopleData(state);
       loadVehicleData(state);
 	  loadPlanets(state);
     }, []);
